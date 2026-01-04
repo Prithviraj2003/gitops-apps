@@ -1,4 +1,6 @@
 postgresql:
+  image:
+    tag: 16
   auth: 
     username: user
     password: pass
