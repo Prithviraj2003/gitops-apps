@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: application
+metadata:
+  name: postgres
+  namespace: argocd
+
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Prithviraj2003/gitops-apps.git
+    targetRevision: main
+    path: apps/postgres
+    helm:
+      valuesFrom:
+        -values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: databases
+  syncPolicy: 
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

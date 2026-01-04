@@ -1,0 +1,16 @@
+postgresql:
+  auth: 
+    username: user
+    password: pass
+    database: mydb
+  primary:
+    persistence:
+      enabled: true
+      size: 10Gi
+    resource: 
+      requests:
+        memory: "256Mi"
+        cpu: "25m"
+      limits:
+        memory: "512Mi"
+        cpu: "50m"
